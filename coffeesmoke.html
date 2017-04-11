@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><title>smoke.js | A Small But Good JavaScript Smoke Effect</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style type="text/css">
+	html, body {
+		position: relative;
+		margin: 0;
+		width: 100%;
+	}
+	#hi{
+		position: absolute;
+		top: 40%;
+		width: 100%;
+		text-align: center;
+	}
+	#hi a {
+		color: #fff;
+		font-size: 80px;
+		text-decoration: none;
+		font-family: Lobster;
+	}
+
+
+
+	body {
+	background-image: url(./assets/38027460_xl.jpg);
+	background-size: cover;
+	background-repeat: no-repeat;
+	}
+
+</style>
+
+
+</head><body cz-shortcut-listen="true">
+<canvas id="canvas" width="960" height="908"></canvas>
+<script src="./assets/smoke.js"></script>
+<script>
+
+
+	var canvas = document.getElementById('canvas')
+	var ctx = canvas.getContext('2d')
+	W = document.body.parentNode.clientWidth ;
+	H = window.innerHeight;
+	canvas.width = W ;
+	canvas.height = H;
+
+	var party = smokemachine(ctx, [255.1, 255.1, 255.1])
+	party.start() // start animating
+
+	onmousemove = function (e) {
+		var x = e.clientX
+		var y = e.clientY
+		var n = .5
+		var t = Math.floor(Math.random() * 200) + 3800
+		party.addsmoke(x, y, n, t)
+	}
+
+	window.onresize = function() {
+   W = document.body.parentNode.clientWidth;
+   H = window.innerHeight;
+   canvas.width = W;
+   canvas.height = H;
+}
+
+	setInterval(function(){
+		party.addsmoke(document.body.parentNode.clientWidth/2, innerHeight, 1)
+	}, 100);
+
+
+</script>
+
+
+</body></html>
